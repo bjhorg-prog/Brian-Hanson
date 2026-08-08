@@ -13,8 +13,10 @@ This is an **architect** pass: read, probe, verify, design. Build nothing, fix
 nothing, change no state (read-only recon commands are allowed). Execution is a
 separate session/model working from the finished blueprint.
 
-Model note: architect passes deserve the strongest available model. If running
-on a lighter model, say so before starting and let the user decide.
+Model note: architect passes deserve the strongest available thinking model.
+Recommend switching to Opus 5 if it isn't already active before starting. If
+the user is running on a lighter model even after that recommendation, say so
+plainly and let them decide.
 
 ## Step 1 — Brief (checkpoint)
 
