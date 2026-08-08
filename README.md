@@ -4,9 +4,17 @@ Reusable Claude Code skills, shared across client projects.
 
 ## One-time setup (per project)
 
-Paste this into a fresh Claude Code chat in your project:
+Run this in your project directory — a real shell command, not a "fetch this
+URL" request to Claude. (Asking Claude to "fetch" it can route through
+WebFetch, which processes content through an AI model and will corrupt the
+file instead of copying it exactly.)
 
-> Fetch https://raw.githubusercontent.com/bjhorg-prog/Brian-Hanson/main/.claude/commands/get-skill.md and save it to .claude/commands/get-skill.md in this project, creating the .claude/commands/ folder if it doesn't exist.
+```
+mkdir -p .claude/commands && curl -fsSL https://raw.githubusercontent.com/bjhorg-prog/Brian-Hanson/main/.claude/commands/get-skill.md -o .claude/commands/get-skill.md
+```
+
+Paste that into your terminal directly, or paste it into Claude Code and ask
+it to run it (it will use its Bash tool, not WebFetch).
 
 ## Using it
 
