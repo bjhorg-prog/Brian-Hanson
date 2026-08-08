@@ -33,3 +33,12 @@ again any time to refresh to the latest version.
   (action/reaction/counteraction, premortem, risk table, unknowns ledger,
   hard stops) that a cheaper model or a later session can execute without
   improvising.
+
+## Note for maintainers: updates can lag a few minutes
+
+GitHub's raw-file CDN (`raw.githubusercontent.com`) caches branch URLs like
+`.../main/...` for a few minutes after a push. If you update a skill here and
+immediately test `/get-skill` elsewhere, you may briefly get the old version.
+That's normal CDN lag, not a broken push — wait a few minutes and retry. To
+confirm a push actually landed right away, check the file through the GitHub
+API/UI (always current) rather than the raw CDN URL.
