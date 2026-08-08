@@ -2,30 +2,43 @@
 
 Reusable Claude Code skills, shared across client projects.
 
-## One-time setup (per project)
+## Getting a skill into your project
 
-Run this in your project directory — a real shell command, not a "fetch this
-URL" request to Claude. (Asking Claude to "fetch" it can route through
-WebFetch, which processes content through an AI model and will corrupt the
-file instead of copying it exactly.)
+1. Clone this repo as a sibling folder, next to your project (not inside
+   it) — the same way course material or any other reference repo gets
+   cloned alongside a working project:
 
-```
-mkdir -p .claude/commands && curl -fsSL https://raw.githubusercontent.com/bjhorg-prog/Brian-Hanson/main/.claude/commands/get-skill.md -o .claude/commands/get-skill.md
-```
+   ```
+   git clone https://github.com/bjhorg-prog/Brian-Hanson.git
+   ```
 
-Paste that into your terminal directly, or paste it into Claude Code and ask
-it to run it (it will use its Bash tool, not WebFetch).
+2. Copy the skill you want from the clone into your project. For
+   `architect-blueprint`, that's two files:
 
-## Using it
+   ```
+   cp -r ../Brian-Hanson/.claude/skills/architect-blueprint .claude/skills/
+   cp ../Brian-Hanson/references/blueprint-method.md references/
+   ```
 
-Once installed, run:
+   (Adjust the `../Brian-Hanson` path if you cloned it somewhere other than
+   directly alongside your project.)
 
-```
-/get-skill architect-blueprint
-```
+3. That's it — no install script, nothing auto-executed. You can open and
+   read both files before copying them if you want to see exactly what
+   they do.
 
-to pull that skill (and everything it depends on) into your project. Run it
-again any time to refresh to the latest version.
+To update later, `git pull` inside the cloned `Brian-Hanson` folder, then
+re-copy the files you're using.
+
+## Why not an automated install command
+
+An earlier version of this repo shipped a `/get-skill` command that fetched
+files over HTTP and immediately executed their contents. In testing, that
+pattern — fetch unreviewed remote content, then blindly act on it — got
+flagged and blocked by Claude Code's own safety systems, the same way a
+supply-chain attack would be. Plain `git clone` avoids that entirely: it's
+an ordinary, transparent operation, and nothing runs until you decide to
+copy a file into a place where it takes effect.
 
 ## Skills available
 
@@ -33,12 +46,3 @@ again any time to refresh to the latest version.
   (action/reaction/counteraction, premortem, risk table, unknowns ledger,
   hard stops) that a cheaper model or a later session can execute without
   improvising.
-
-## Note for maintainers: updates can lag a few minutes
-
-GitHub's raw-file CDN (`raw.githubusercontent.com`) caches branch URLs like
-`.../main/...` for a few minutes after a push. If you update a skill here and
-immediately test `/get-skill` elsewhere, you may briefly get the old version.
-That's normal CDN lag, not a broken push — wait a few minutes and retry. To
-confirm a push actually landed right away, check the file through the GitHub
-API/UI (always current) rather than the raw CDN URL.
