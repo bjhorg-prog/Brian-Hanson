@@ -20,9 +20,6 @@ Reusable Claude Code skills, shared across client projects.
    cp ../Brian-Hanson/references/blueprint-method.md references/
    ```
 
-   (Adjust the `../Brian-Hanson` path if you cloned it somewhere other than
-   directly alongside your project.)
-
 3. That's it — no install script, nothing auto-executed. You can open and
    read both files before copying them if you want to see exactly what
    they do.
