@@ -43,3 +43,27 @@ copy a file into a place where it takes effect.
   (action/reaction/counteraction, premortem, risk table, unknowns ledger,
   hard stops) that a cheaper model or a later session can execute without
   improvising.
+
+## Task management with Claude Code + Todoist
+
+Claude Code can manage your task list conversationally through Todoist — add, complete,
+reschedule, and check on tasks just by asking, no manual setup beyond auth.
+
+1. If you don't already have a Todoist account, sign up free at https://todoist.com — the
+   setup below will prompt you to sign in/sign up automatically if you skip this step.
+
+2. Install the Todoist CLI and skill:
+
+   ```
+   npm install -g @doist/todoist-cli
+   td skill install claude-code
+   td auth login
+   ```
+
+   `td auth login` opens a browser window for Todoist's OAuth sign-in (no manual token or
+   config file needed).
+
+3. In Claude Code, run `/mcp` to confirm the Todoist connection is active. From there, just
+   ask Claude to add, list, or complete tasks in plain language.
+
+Full setup docs: https://www.todoist.com/help/articles/use-claude-code-with-todoist-cli-and-mcp-b1USJ4HB3
