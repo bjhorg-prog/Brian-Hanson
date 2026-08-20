@@ -47,23 +47,26 @@ copy a file into a place where it takes effect.
 ## Task management with Claude Code + Todoist
 
 Claude Code can manage your task list conversationally through Todoist — add, complete,
-reschedule, and check on tasks just by asking, no manual setup beyond auth.
+reschedule, and check on tasks just by asking. Everything below is typed directly into
+the Claude Code chat — no terminal, no installs.
 
-1. If you don't already have a Todoist account, sign up free at https://todoist.com — the
-   setup below will prompt you to sign in/sign up automatically if you skip this step.
-
-2. Install the Todoist CLI and skill:
+1. Paste this into the chat and confirm when Claude Code asks to run it:
 
    ```
-   npm install -g @doist/todoist-cli
-   td skill install claude-code
-   td auth login
+   claude mcp add --transport http todoist https://ai.todoist.net/mcp --scope user
    ```
 
-   `td auth login` opens a browser window for Todoist's OAuth sign-in (no manual token or
-   config file needed).
+   `--scope user` means this is a one-time setup — once connected, it works in every
+   project you open Claude Code in, not just this one. **Safe to paste again** if you're
+   ever unsure it worked; re-running it won't break an existing connection.
 
-3. In Claude Code, run `/mcp` to confirm the Todoist connection is active. From there, just
-   ask Claude to add, list, or complete tasks in plain language.
+2. Type `/mcp`, select **Todoist**, and sign in through the browser window that opens.
+   No Todoist account yet? The same sign-in screen lets you create one on the spot.
 
-Full setup docs: https://www.todoist.com/help/articles/use-claude-code-with-todoist-cli-and-mcp-b1USJ4HB3
+**Check it worked:** ask Claude Code "what's on my Todoist list?" A real answer (tasks,
+or "your list is empty") means you're done. An error means step 1 or 2 didn't complete —
+just repeat the step that failed; nothing above is destructive to redo.
+
+Prefer a standalone `td` command outside Claude Code too? Optional, not required:
+`npm install -g @doist/todoist-cli` → `td skill install claude-code` → `td auth login`.
+Full docs: https://www.todoist.com/help/articles/use-claude-code-with-todoist-cli-and-mcp-b1USJ4HB3
